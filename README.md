@@ -15,10 +15,14 @@ cursor line or visually selected range.
 ## Installation
 Installation is as usual for modern Vim plugin managers:
 
-lazy.nvim:
+lazy.nvim (enabling lazy load and extra leader mappings - using just plugin name without lazy load should work too):
 ```
   {
     "kjhaber/vim-codeurl",
+    lazy = true,
+    cmd = {
+      "CodeUrl",
+    },
     init = function()
       vim.keymap.set("n", "<leader>cu", ":CodeUrl<CR>", { noremap = true })
       vim.keymap.set("v", "<leader>cu", ":'<,'>CodeUrl<CR>", { noremap = true })
