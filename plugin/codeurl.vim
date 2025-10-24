@@ -9,7 +9,8 @@ function! s:GetGitRepoInfo(start_line, end_line)
     endif
 
     " Get the relative path of the current file from repo root
-    let l:relative_path = fnamemodify(expand('%:p'), ':~:.' . l:repo_root)
+    let l:relative_path = system('git ls-files --full-name ' . shellescape(expand('%')))
+    let l:relative_path = trim(l:relative_path)
 
     " Get current branch name
     let l:branch = system('git rev-parse --abbrev-ref HEAD 2>/dev/null')
